@@ -13,6 +13,7 @@
 		<maven.compiler.target>17</maven.compiler.target>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<spring-boot.version>3.4.5</spring-boot.version>
+		<lombok.version>1.18.36</lombok.version>
 	</properties>
 
 	<dependencyManagement>
@@ -39,9 +40,22 @@
 		</dependency>
 
 		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>${lombok.version}</version>
+		</dependency>
+
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
+			<!--If want exclude junit4 and use only junit5-->
+			<exclusions>
+				<exclusion>
+					<groupId>org.junit.vintage</groupId>
+					<artifactId>junit-vintage-engine</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 	</dependencies>
 
