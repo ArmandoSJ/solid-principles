@@ -2,11 +2,11 @@ package com.technologyos.solid.dtos;
 
 import java.time.LocalDateTime;
 
-public class InPersonAppointment extends Appointment {
+public class PhysicalAppointment extends Appointment {
    private final String office;
 
 
-   public InPersonAppointment(String patient, LocalDateTime appointmentDate, String office) {
+   public PhysicalAppointment(String patient, LocalDateTime appointmentDate, String office) {
       super(patient, appointmentDate);
       this.office = office;
    }
