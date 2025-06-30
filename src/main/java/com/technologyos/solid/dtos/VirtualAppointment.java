@@ -6,14 +6,15 @@ import java.time.LocalDateTime;
 
 @Getter
 public class VirtualAppointment extends Appointment {
-   private final String appointmentUrl;
+   private final String videoCallLink;
 
-   public VirtualAppointment(String patient, LocalDateTime appointmentDate, String appointmentUrl) {
+   public VirtualAppointment(String patient, LocalDateTime appointmentDate, String videoCallLink) {
       super(patient, appointmentDate);
-      this.appointmentUrl = appointmentUrl;
+      this.videoCallLink = videoCallLink;
    }
 
+   @Override
    public String getAppointmentType() {
-      return "Virtual (" + appointmentUrl + ")";
+      return "Virtual via " + videoCallLink;
    }
 }
