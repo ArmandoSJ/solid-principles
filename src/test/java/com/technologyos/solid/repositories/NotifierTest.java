@@ -1,7 +1,7 @@
 package com.technologyos.solid.repositories;
 
 import com.technologyos.solid.dtos.AppointmentDto;
-import com.technologyos.solid.service.AppointmentService;
+import com.technologyos.solid.service.AppointmentNotifierService;
 import com.technologyos.solid.service.SmsNotifier;
 import com.technologyos.solid.service.WhatsappNotifier;
 import org.junit.jupiter.api.BeforeEach;
@@ -14,7 +14,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
@@ -27,12 +26,12 @@ class NotifierTest {
    private WhatsappNotifier whatsappNotifier;
 
    @InjectMocks
-   private AppointmentService appointmentService;
+   private AppointmentNotifierService appointmentNotifierService;
 
    @BeforeEach
    void setUp() {
       List<Notifier> notifiers = List.of(smsNotifier, whatsappNotifier);
-      appointmentService = new AppointmentService(notifiers);
+      appointmentNotifierService = new AppointmentNotifierService(notifiers);
    }
 
    @Test
@@ -43,7 +42,7 @@ class NotifierTest {
       appointment.setAppointmentDate(LocalDateTime.now());
 
       // Act
-      appointmentService.schedule(appointment);
+      appointmentNotifierService.schedule(appointment);
 
       // Assert
       verify(smsNotifier, times(1)).notify(appointment);

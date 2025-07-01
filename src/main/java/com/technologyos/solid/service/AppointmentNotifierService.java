@@ -7,10 +7,10 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class AppointmentService {
+public class AppointmentNotifierService {
    private final List<Notifier> notifiers;
 
-   public AppointmentService(List<Notifier> notifiers) {
+   public AppointmentNotifierService(List<Notifier> notifiers) {
       this.notifiers = notifiers;
    }
 
